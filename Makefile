@@ -4,7 +4,11 @@ UID = $$(id -u)
 C_PHP = ${PREFIX}_php_1
 
 selfupdate:
-	rm Makefile &&  curl https://raw.githubusercontent.com/azzaromax/docker-drupal-makefile/master/Makefile -o Makefile
+	rm -rf docker-drupal-makefile
+	rm Makefile
+	git clone git@github.com:azzaromax/docker-drupal-makefile.git
+	mv docker-drupal-makefile/Makefile ./
+	rm -rf docker-drupal-makefile
 
 docker.build:
 	docker-compose up -d --remove-orphans --build
