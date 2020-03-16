@@ -3,6 +3,9 @@ PREFIX = $(shell basename $(CURDIR) | tr A-Z a-z)
 UID = $$(id -u)
 C_PHP = ${PREFIX}_php_1
 
+selfupdate:
+	rm Makefile &&  curl https://raw.githubusercontent.com/azzaromax/docker-drupal-makefile/master/Makefile -o Makefile
+
 docker.build:
 	docker-compose up -d --remove-orphans --build
 
